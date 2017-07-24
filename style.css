@@ -1,0 +1,98 @@
+.c-body {
+  background: #6c6;
+}
+@media screen and (max-width: 720px) {
+  .с-form {
+    width: 70%;
+    height: 46vw;
+  }
+  .с-form__username,
+  .с-form__password,
+  .с-form__login {
+    height: 10vw;
+    font-size: 3vw;
+  }
+  .с-form__text {
+    font-size: 3vw;
+  }
+}
+@media screen and (min-width: 720px) {
+  .с-form {
+    width: 36%;
+    height: 24vw;
+  }
+  .с-form__username,
+  .с-form__password,
+  .с-form__login {
+    height: 5vw;
+    font-size: 1.5vw;
+  }
+  .с-form__text {
+    font-size: 1.5vw;
+  }
+}
+.с-form {
+  position: absolute;
+  padding-top: 4%;
+  background-color: #fff;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+.с-form__username,
+.с-form__password {
+  display: block;
+  margin: auto auto 4%;
+  width: 70%;
+  background-color: #f2f2f2;
+  border: none;
+  padding-left: 4%;
+}
+.с-form__login {
+  display: block;
+  margin: auto auto 4%;
+  width: 74%;
+  background-color: #00b242;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+}
+.с-form__login:hover {
+  background-color: #6c6;
+  cursor: pointer;
+}
+.с-form__text {
+  text-align: center;
+  font-family: sans-serif;
+  color: #b9b9b9;
+}
+.с-form__link {
+  color: #00b242;
+  text-decoration: none;
+}
+input::-webkit-input-placeholder {
+  color: #bababa;
+}
+input::-moz-placeholder {
+  color: #bababa;
+}
+input:-moz-placeholder {
+  color: #bababa;
+}
+input:-ms-input-placeholder {
+  color: #bababa;
+}
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+input::focus::-moz-placeholder {
+  color: transparent;
+}
+input::focus:-moz-placeholder {
+  color: transparent;
+}
+input::focus:-ms-input-placeholder {
+  color: transparent;
+}
