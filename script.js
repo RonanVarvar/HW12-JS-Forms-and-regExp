@@ -1,17 +1,17 @@
 document.forms[0].onsubmit = function(e) {
     e.preventDefault();
 
-    checkUser();
+    verifyUser();
 };
 
 function getLogin() {
     this.username = document.getElementsByClassName('с-form__username')[0].value;
     this.password = document.getElementsByClassName('с-form__password')[0].value;
-    var user = {username, password};
+    var user = { username: username, password: password};
     this.obj = JSON.stringify(user);
 }
 
-function checkUser() {
+function verifyUser() {
     getLogin();
 
     var regExp1 = /^[a-z0-9]{2,15}$/i;
@@ -20,13 +20,14 @@ function checkUser() {
     var valid2 = regExp2.test(this.password);
 
     if (valid1 === true && valid2 === true) {
-        checkStorage();
+        entryStorage();
     } else {
         console.log('The username or password you entered is incorrect');
     }
+
 }
 
-function checkStorage() {
+function entryStorage() {
     getLogin();
 
     if (typeof(localStorage) !== 'undefined') {
@@ -34,29 +35,32 @@ function checkStorage() {
     } else {
         setCookie('user', this.obj);
     }
+
 }
 
 function setCookie(name, value, options) {
-    options = options || {};
-
     var expires = options.expires;
+    var updatedCookie = name + "=" + value;
+    var propValue;
+    var propName;
+    var d;
+
+    options = options || {};
+    value = encodeURIComponent(value);
 
     if (typeof expires == "number" && expires) {
-        var d = new Date();
+        d = new Date();
         d.setTime(d.getTime() + expires * 1000);
         expires = options.expires = d;
     }
+
     if (expires && expires.toUTCString) {
         options.expires = expires.toUTCString();
     }
 
-    value = encodeURIComponent(value);
-
-    var updatedCookie = name + "=" + value;
-
-    for (var propName in options) {
+    for (propName in options) {
         updatedCookie += "; " + propName;
-        var propValue = options[propName];
+        propValue = options[propName];
         if (propValue !== true) {
             updatedCookie += "=" + propValue;
         }
