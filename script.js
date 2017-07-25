@@ -7,8 +7,8 @@ document.forms[0].onsubmit = function(e) {
 function getLogin() {
     this.username = document.getElementsByClassName('с-form__username')[0].value;
     this.password = document.getElementsByClassName('с-form__password')[0].value;
-    this.user = { username: username, password: password};
-   // this.obj = JSON.stringify(user);
+    var user = { username: username, password: password};
+    this.obj = JSON.stringify(user);
 }
 
 function verifyUser() {
@@ -31,9 +31,9 @@ function entryinStorage() {
     getLogin();
 
     if (typeof(localStorage) !== 'undefined') {
-        localStorage.setItem('user', this.user);
+        localStorage.setItem('user', this.obj);
     } else {
-        setCookie('user', this.user);
+        setCookie('user', this.obj);
     }
 
 }
