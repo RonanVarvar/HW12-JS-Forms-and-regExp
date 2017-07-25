@@ -7,8 +7,8 @@ document.forms[0].onsubmit = function(e) {
 function getLogin() {
     this.username = document.getElementsByClassName('с-form__username')[0].value;
     this.password = document.getElementsByClassName('с-form__password')[0].value;
-    var user = { username: username, password: password};
-    this.obj = JSON.stringify(user);
+    this.user = { username: username, password: password};
+   // this.obj = JSON.stringify(user);
 }
 
 function verifyUser() {
@@ -20,20 +20,20 @@ function verifyUser() {
     var valid2 = regExp2.test(this.password);
 
     if (valid1 === true && valid2 === true) {
-        entryStorage();
+        entryinStorage();
     } else {
         console.log('The username or password you entered is incorrect');
     }
 
 }
 
-function entryStorage() {
+function entryinStorage() {
     getLogin();
 
     if (typeof(localStorage) !== 'undefined') {
-        localStorage.setItem('user', this.obj);
+        localStorage.setItem('user', this.user);
     } else {
-        setCookie('user', this.obj);
+        setCookie('user', this.user);
     }
 
 }
