@@ -7,7 +7,7 @@ document.forms[0].onsubmit = function(e) {
 function getLogin() {
     this.username = document.getElementsByClassName('с-form__username')[0].value;
     this.password = document.getElementsByClassName('с-form__password')[0].value;
-    var user = { username: username, password: password};
+    var user = { username: username, password: password };
     this.obj = JSON.stringify(user);
 }
 
