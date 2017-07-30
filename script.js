@@ -1,27 +1,41 @@
 document.forms[0].onsubmit = function (event) {
     event.preventDefault();
+
     verifyUser();
 };
 
 function getLogin() {
     this.username = document.getElementsByClassName('с-form__username')[0].value;
     this.password = document.getElementsByClassName('с-form__password')[0].value;
+
     var user = {
         username: username,
         password: password
     };
+
     this.obj = JSON.stringify(user);
 }
 
-function verifyUser() {
+function checkUsername() {
     getLogin();
 
-    var regExp1 = /^[a-z0-9]{2,15}$/i,
-        regExp2 = /^(?=.*[#])(?=.*[$])[a-z0-9#$]{6,15}$/i,
-        valid1 = regExp1.test(this.username),
-        valid2 = regExp2.test(this.password);
+    var regExp = /^[a-z0-9]{2,15}$/i,
+        valid = regExp.test(this.username);
 
-    if (valid1 === true && valid2 === true) {
+    return valid;
+}
+
+function checkPassword() {
+    getLogin();
+
+    var regExp = /^(?=.*[#])(?=.*[$])[a-z0-9#$]{6,15}$/i,
+        valid = regExp.test(this.password);
+
+    return valid;
+}
+
+function verifyUser() {
+    if (checkUsername() && checkPassword()) {
         entryInStorage();
     } else {
         console.log('The username or password you entered is incorrect');
